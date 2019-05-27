@@ -1,0 +1,9 @@
+target
+node
+node_modules
+package-lock.json
+logs
+/.idea
+kite-allure-reports
+*.iml
+temp

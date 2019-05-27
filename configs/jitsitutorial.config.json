@@ -1,0 +1,34 @@
+{
+  "name": "JitsiTutorial %ts",
+  "remotes": [
+    {
+      "type": "local",
+      "remoteAddress": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "JitsiTutorial Test %ts",
+      "tupleSize": 1,
+      "description": "JitsiTutorial test description",
+      "testImpl": "org.webrtc.kite.jitsitutorial.KiteJitsiTutorialTest",
+      "payload" : {
+        "url": "https://google.com"
+      }
+    }
+  ],
+  "browsers": [
+    {
+      "browserName": "chrome",
+      "version": "74",
+      "platform": "localhost",
+      "flags": []
+    },
+    {
+      "browserName": "firefox",
+      "version": "66",
+      "platform": "localhost",
+      "flags": []
+    }
+  ]
+}
