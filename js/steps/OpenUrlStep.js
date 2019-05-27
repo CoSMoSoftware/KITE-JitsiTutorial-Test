@@ -16,6 +16,7 @@ class OpenUrlStep extends TestStep {
 
   async step() {
     await this.page.open(this);
+    await this.page.enterRoom('I am a random room' + this.uuid);
   }
 }
 

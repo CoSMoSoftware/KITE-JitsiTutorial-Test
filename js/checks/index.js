@@ -1,2 +1,3 @@
-exports.MyFirstCheck = require("./MyFirstCheck");
+exports.SentVideoCheck = require("./SentVideoCheck");
+exports.ReceivedVideoCheck = require("./ReceivedVideoCheck");
 
