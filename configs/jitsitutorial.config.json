@@ -1,15 +1,15 @@
 {
   "name": "JitsiTutorial %ts",
-  "remotes": [
+  "grids": [
     {
       "type": "local",
-      "remoteAddress": "http://localhost:4444/wd/hub"
+      "url": "http://localhost:4444/wd/hub"
     }
   ],
   "tests": [
     {
       "name": "JitsiTutorial Test %ts",
-      "tupleSize": 1,
+      "tupleSize": 2,
       "description": "JitsiTutorial test description",
       "testImpl": "org.webrtc.kite.jitsitutorial.KiteJitsiTutorialTest",
       "payload" : {
@@ -27,18 +27,15 @@
       }
     }
   ],
-  "browsers": [
+  "clients": [
     {
       "browserName": "chrome",
-      "version": "74",
-	  "platform": "localhost"
-      "platform": "WINDOWS",
+      "platform": "localhost",
       "flags": []
     },
     {
       "browserName": "firefox",
-      "version": "66",
-      "platform": "WINDOWS",
+      "platform": "localhost",
       "flags": []
     }
   ]

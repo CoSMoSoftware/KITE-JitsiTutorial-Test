@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-
+  <!-- the folder KITE-JistiTutorial-Test must be located in your %KITE_HOME% folder, 
+  with access to its kite-base version 2.0.4 parent -->
   <parent>
     <groupId>org.webrtc.kite</groupId>
     <artifactId>kite-base</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.4</version>
   </parent>
 
   <artifactId>jitsitutorial-test</artifactId>

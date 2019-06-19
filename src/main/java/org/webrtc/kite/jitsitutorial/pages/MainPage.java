@@ -1,9 +1,8 @@
 package org.webrtc.kite.jitsitutorial.pages;
 
+import io.cosmosoftware.kite.interfaces.Runner;
 import io.cosmosoftware.kite.pages.BasePage;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,8 +19,8 @@ public class MainPage extends BasePage {
   @FindBy(tagName = "video")  //Find by tagName
   private List<WebElement> videos;    //List of all the videos on a page
 
-  public MainPage(WebDriver webDriver, Logger logger) {
-    super(webDriver, logger);
+  public MainPage(Runner runner) {
+    super(runner);
   }
 
 
