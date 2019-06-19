@@ -13,7 +13,17 @@
       "description": "JitsiTutorial test description",
       "testImpl": "org.webrtc.kite.jitsitutorial.KiteJitsiTutorialTest",
       "payload" : {
-        "url": "https://google.com"
+        "getStats" : {
+          "enabled": true,
+          "statsCollectionTime": 2,
+          "statsCollectionInterval": 1,
+          "peerConnections": ["window.pc[0]"],
+          "selectedStats" : ["inbound-rtp", "outbound-rtp", "candidate-pair"]
+        },
+        "url": "https://meet.jit.si/",
+        "rooms": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "usersPerRoom": 2,
+        "testTimeout": 20
       }
     }
   ],
@@ -21,13 +31,14 @@
     {
       "browserName": "chrome",
       "version": "74",
-      "platform": "localhost",
+	  "platform": "localhost"
+      "platform": "WINDOWS",
       "flags": []
     },
     {
       "browserName": "firefox",
       "version": "66",
-      "platform": "localhost",
+      "platform": "WINDOWS",
       "flags": []
     }
   ]
