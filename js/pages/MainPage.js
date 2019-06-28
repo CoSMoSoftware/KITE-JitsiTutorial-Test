@@ -33,24 +33,24 @@ class MainPage {
     stepInfo.numberOfParticipant = parseInt(stepInfo.numberOfParticipant) + 1; // To add the first video
     
     // Waiting for all the videos
-    await TestUtils.waitVideos(stepInfo, videos);
+    await TestUtils.waitForVideos(stepInfo, videos);
     stepInfo.numberOfParticipant --; // To delete the first video
 
     // Check the status of the video
     // checked.result = 'blank' || 'still' || 'video'
     i = 0;
     checked = await TestUtils.verifyVideoDisplayByIndex(stepInfo.driver, index + 1);
-        while(checked.result === 'blank' || checked.result === undefined && i < timeout) {
+        while(checked.result === 'blank' || typeof checked.result === "undefined" && i < timeout) {
         checked = await TestUtils.verifyVideoDisplayByIndex(stepInfo.driver, index + 1);
         i++;
-        await waitAround(1000);
+        await TestUtils.waitAround(1000);
     }
 
     i = 0;
     while(i < 3 && checked.result != 'video') {
         checked = await TestUtils.verifyVideoDisplayByIndex(stepInfo.driver, index + 1);
         i++;
-        await waitAround(3 * 1000); // waiting 3s after each iteration
+        await TestUtils.waitAround(3 * 1000); // waiting 3s after each iteration
     }
     return checked.result;
   }

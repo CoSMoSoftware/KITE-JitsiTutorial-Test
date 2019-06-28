@@ -1,21 +1,16 @@
-const {TestUtils, WebDriverFactory, KiteBaseTest} = require('./node_modules/kite-common'); 
-const {OpenUrlStep, GetStatsStep, ScreenshotStep} = require('./steps');
+const {TestUtils, WebDriverFactory, KiteBaseTest, ScreenshotStep} = require('kite-common'); 
+const {OpenUrlStep, GetStatsStep} = require('./steps');
 const {SentVideoCheck, ReceivedVideoCheck} = require('./checks');
 const {MainPage} = require('./pages');
 
-// KiteBaseTest config
-const globalVariables = TestUtils.getGlobalVariables(process);
-const capabilities = require(globalVariables.capabilitiesPath);
-const payload = require(globalVariables.payloadPath);
-
 class JitsiTutorial extends KiteBaseTest {
-  constructor(name, globalVariables, capabilities, payload) {
-    super(name, globalVariables, capabilities, payload);
+  constructor(name, kiteConfig) {
+    super(name, kiteConfig);
   }
   
   async testScript() {
     try {
-      this.driver = await WebDriverFactory.getDriver(capabilities, capabilities.remoteAddress);
+      this.driver = await WebDriverFactory.getDriver(this.capabilities, this.remoteUrl);
       this.page = new MainPage(this.driver);
 
       let openUrlStep = new OpenUrlStep(this);
@@ -35,6 +30,7 @@ class JitsiTutorial extends KiteBaseTest {
       let screenshotStep = new ScreenshotStep(this);
       await screenshotStep.execute(this);
 
+      await this.waitAllSteps();
     } catch (e) {
       console.log(e);
     } finally {
@@ -45,5 +41,9 @@ class JitsiTutorial extends KiteBaseTest {
 
 module.exports= JitsiTutorial;
 
-let test = new JitsiTutorial('JitsiTutorial test', globalVariables, capabilities, payload);
-test.run();
+
+(async () => {
+  const kiteConfig= await TestUtils.getKiteConfig(__dirname);
+  let test = new JitsiTutorial('JitsiTutorial test', kiteConfig);
+  await test.run();
+})();
